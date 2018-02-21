@@ -8,7 +8,6 @@ import sys, tty, termios, signal
 
 # pin 2 = right
 #1810
--2500
 
 def stopAll():
     pass
@@ -23,8 +22,8 @@ def close():
   RPL.servoWrite(1, 2000)
   print "close"
 
-i = 500
-j = 2500
+i = RPL.servoRead(0)
+j = RPL.servoRead(1)
 
 def stepclose():
     RPL.servoWrite(0,i+10)
