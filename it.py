@@ -25,11 +25,14 @@ def close():
 i = RPL.servoRead(0)
 j = RPL.servoRead(1)
 
-def stepclose():
-    RPL.servoWrite(0,i+10)
-    RPL.servoWrite(1,j-10)
-    print "step close"
+def stepopen():
+  RPL.servoWrite(0,i-10)
+  RPL.servoWrite(1,j+10)
+  print "step open"
 
+def printpos():
+  print RPL.servoRead(0)
+  print RPL.servoRead(1)
 
 fd = sys.stdin.fileno()
 old_settings = termios.tcgetattr(fd)
@@ -61,5 +64,7 @@ while True:
       close()
     elif ch == "s":
       stepclose()
+    elif ch == "P":
+        printpos()
     else:
       stopAll()
