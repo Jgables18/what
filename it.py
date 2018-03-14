@@ -30,6 +30,21 @@ def stepopen():
   RPL.servoWrite(1,j+10)
   print "step open"
 
+def stepclose():
+  RPL.servoWrite(0,i+10)
+  RPL.servoWrite(1,j-10)
+  print "step close"
+
+def bigopen():
+  RPL.servoWrite(0,i-50)
+  RPL.servoWrite(1,j+50)
+  print "big open"
+
+  def bigclose():
+    RPL.servoWrite(0,i+50)
+    RPL.servoWrite(1,j-50)
+    print "big close"
+
 def printpos():
   print RPL.servoRead(0)
   print RPL.servoRead(1)
@@ -58,12 +73,18 @@ while True:
     termios.tcsetattr(fd, termios.TCSADRAIN, old_settings) # this resets the console settings
     break
   else:
-    if ch == 'w':
-      open()
+    if ch == 'q':
+          open()
+    elif ch == "w":
+          close()
     elif ch == "a":
-      close()
+        bigopen()
     elif ch == "s":
-      stepclose()
+        bigclose()
+    elif ch == "z":
+        stepopen()
+    elif ch == "x":
+        stepclose()
     elif ch == "P":
         printpos()
     else:
